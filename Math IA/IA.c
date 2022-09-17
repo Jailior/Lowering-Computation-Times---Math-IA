@@ -3,7 +3,6 @@
 #include <time.h>
 
 #define PI 3.14159265
-#define size 100000
 
 double taylor_sine(double x);
 
@@ -14,17 +13,9 @@ int main()
 
 	printf("With Sine\n\n");
 
-	double x[size];
-
-	for (int i = 0; i < size; i++)
-		if (rand() % 2 == 0)
-		{
-			x[i] = PI / 2;
-		}
-		else
-		{
-			x[i] = -(PI / 2);
-		}
+	
+	double x = PI / 2;
+	int size = pow(10, 9);
 
 
 	// start regular
@@ -36,7 +27,7 @@ int main()
 
 	for (int i = 0; i < size; i++)
 	{
-		a = sin(x[i]);
+		a = sin(x);
 	}
 
 
@@ -62,7 +53,7 @@ int main()
 
 	for (int i = 0; i < size; i++)
 	{
-		b = x[i] - ((x[i] * x[i] * x[i]) / 6.0) + ((x[i] * x[i] * x[i] * x[i] * x[i]) / 120.0) - ((x[i] * x[i] * x[i] * x[i] * x[i] * x[i] * x[i]) / 5040.0);
+		b = x - ((x * x * x) / 6.0) + ((x * x * x * x * x) / 120.0) - ((x * x * x * x * x * x * x) / 5040.0);
 	}
 	
 	time2 = clock() - time2;
