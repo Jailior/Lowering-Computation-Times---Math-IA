@@ -15,7 +15,7 @@ int main()
 
 	
 	double x = PI / 2;
-	int size = pow(10, 9);
+	double size = pow(10,9);
 
 
 	// start regular
@@ -42,9 +42,9 @@ int main()
 	// ----------------------------------------
 	// ----------------------------------------
 
-	// start taylor series
+	// start mclaurin series
 
-	printf("\nWith Taylor Sine\n\n");
+	printf("\nWith McLaurin Polynomial\n\n");
 
 	clock_t time2;
 	time2 = clock();
@@ -53,7 +53,7 @@ int main()
 
 	for (int i = 0; i < size; i++)
 	{
-		b = x - ((x * x * x) / 6.0) + ((x * x * x * x * x) / 120.0) - ((x * x * x * x * x * x * x) / 5040.0);
+		b = x - ((x * x * x) / 6.0) + ((x * x * x * x * x) / 120.0);
 	}
 	
 	time2 = clock() - time2;
@@ -62,18 +62,33 @@ int main()
 	printf("Time: %f\n", time_taken2);
 	printf("Result: %f\n\n", b);
 
+	// end mclaurin series
+
+	// ----------------------------------------
+	// ----------------------------------------
+
+	// start taylor series
+
+	printf("\nWith Taylor Polynomial\n\n");
+
+	clock_t time3;
+	time3 = clock();
+
+	float c;
+
+	for (int i = 0; i < size; i++)
+	{
+		c = 1 - (((x - (PI / 2)) * (x - (PI / 2))) / 2) + ((x - (PI / 2)) * (((x - (PI / 2))) * ((x - (PI / 2)) * (x - (PI / 2)))) / 24);
+	}
+
+	time3 = clock() - time3;
+	float time_taken3 = ((double)time3) / CLOCKS_PER_SEC;
+
+	printf("Time: %f\n", time_taken2);
+	printf("Result: %f\n\n", c);
+
 	// end taylor series
 
 	printf("\n\n============================================\n");
 	return 0;
 }
-
-double taylor_sine(double x)
-{
-	x = x - ((pow(x, 3)) / 6) + ((pow(x, 5)) / 120) - ((pow(x, 7)) / 5040);
-	return x;
-}
-
-/*
-* 
-*/
